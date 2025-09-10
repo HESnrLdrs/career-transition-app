@@ -3,1117 +3,815 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moving On: Career Transition Workbook</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Moving On - Academic Career Transition App</title>
     <style>
-        :root {
-            --primary: #1B365D;
-            --secondary: #2A9D8F;
-            --accent: #F4A261;
-            --light: #f8f9fa;
-            --dark: #343a40;
-            --success: #28a745;
-            --warning: #ffc107;
-            --danger: #dc3545;
-            --info: #17a2b8;
-        }
-        
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
-        
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Georgia', 'Times New Roman', serif;
             line-height: 1.6;
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            color: var(--primary);
-            min-height: 100vh;
-            padding: 20px;
+            color: #1B365D;
+            overflow-x: hidden;
         }
-        
+
         .app-container {
             max-width: 1200px;
             margin: 0 auto;
+            min-height: 100vh;
             background: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            overflow: hidden;
+            box-shadow: 0 0 50px rgba(0,0,0,0.1);
         }
-        
-        /* Header */
-        .app-header {
-            background: linear-gradient(135deg, var(--primary) 0%, #2A4B7C 100%);
+
+        .nav-header {
+            background: linear-gradient(135deg, #1B365D 0%, #2A9D8F 100%);
             color: white;
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .app-header h1 {
-            font-size: 1.8rem;
-            font-weight: 300;
-        }
-        
-        .user-info {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .user-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--secondary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-        }
-        
-        /* Dashboard Layout */
-        .dashboard {
-            display: grid;
-            grid-template-columns: 280px 1fr;
-            min-height: 80vh;
-        }
-        
-        /* Sidebar */
-        .sidebar {
-            background: linear-gradient(135deg, #2C3E50, #34495E);
-            color: white;
-            padding: 20px 0;
-        }
-        
-        .sidebar-header {
-            padding: 0 20px 20px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            margin-bottom: 20px;
-        }
-        
-        .sidebar-header h2 {
-            font-size: 1.5rem;
-            margin-bottom: 5px;
-        }
-        
-        .sidebar-menu {
-            list-style: none;
-            padding: 0;
-        }
-        
-        .sidebar-menu li {
-            margin-bottom: 5px;
-        }
-        
-        .sidebar-menu a {
-            display: flex;
-            align-items: center;
-            padding: 12px 20px;
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            border-left: 4px solid transparent;
-        }
-        
-        .sidebar-menu a:hover, .sidebar-menu a.active {
-            background: rgba(255,255,255,0.1);
-            border-left-color: var(--accent);
-        }
-        
-        .sidebar-menu i {
-            margin-right: 10px;
-            width: 20px;
+            padding: 30px 20px;
             text-align: center;
-        }
-        
-        /* Main Content */
-        .main-content {
-            padding: 20px;
-            overflow-y: auto;
-        }
-        
-        .content-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid var(--accent);
-        }
-        
-        .content-header h1 {
-            color: var(--primary);
-            font-size: 2.2rem;
-        }
-        
-        .progress-container {
-            background: white;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-            display: flex;
-            align-items: center;
-        }
-        
-        .progress-text {
-            margin-right: 15px;
-            font-weight: bold;
-            color: var(--primary);
-        }
-        
-        .progress-bar {
-            width: 200px;
-            height: 10px;
-            background: #e9ecef;
-            border-radius: 5px;
-            overflow: hidden;
-        }
-        
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(135deg, var(--secondary), var(--accent));
-            border-radius: 5px;
-            transition: width 0.5s ease;
-        }
-        
-        /* Dashboard Cards */
-        .dashboard-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-        
-        .card {
-            background: white;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-        }
-        
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #e9ecef;
-        }
-        
-        .card-header h3 {
-            color: var(--primary);
-            font-size: 1.2rem;
-        }
-        
-        .card-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--secondary);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        /* Module Progress */
-        .module-progress {
-            margin-bottom: 30px;
-        }
-        
-        .module-item {
-            display: flex;
-            align-items: center;
-            padding: 15px;
-            background: white;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-        
-        .module-status {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            margin-right: 15px;
-            background: #e9ecef;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.7rem;
-            color: white;
-        }
-        
-        .module-status.completed {
-            background: var(--success);
-        }
-        
-        .module-status.in-progress {
-            background: var(--info);
-        }
-        
-        .module-details {
-            flex: 1;
-        }
-        
-        .module-title {
-            font-weight: bold;
-            color: var(--primary);
-        }
-        
-        .module-subtitle {
-            font-size: 0.9rem;
-            color: #6c757d;
-        }
-        
-        .module-action {
-            margin-left: 10px;
-        }
-        
-        /* Resources */
-        .resources-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-        }
-        
-        .resource-item {
-            background: white;
-            border-radius: 8px;
-            padding: 15px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transition: transform 0.3s ease;
-        }
-        
-        .resource-item:hover {
-            transform: translateY(-3px);
-        }
-        
-        .resource-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
-            background: linear-gradient(135deg, var(--primary), #2A4B7C);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .resource-details {
-            flex: 1;
-        }
-        
-        .resource-title {
-            font-weight: bold;
-            color: var(--primary);
-        }
-        
-        .resource-desc {
-            font-size: 0.8rem;
-            color: #6c757d;
-        }
-        
-        /* Buttons */
-        .btn {
-            padding: 8px 16px;
-            border-radius: 5px;
-            border: none;
-            cursor: pointer;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-primary {
-            background: linear-gradient(135deg, var(--secondary), var(--primary));
-            color: white;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        /* Workbook Content */
-        .workbook-content {
-            display: none;
-            padding: 20px;
-        }
-        
-        .workbook-content.active {
-            display: block;
-        }
-        
-        .workbook-page {
-            background: white;
-            border-radius: 10px;
-            padding: 30px;
-            margin-bottom: 20px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-        }
-        
-        /* Responsive */
-        @media (max-width: 992px) {
-            .dashboard {
-                grid-template-columns: 1fr;
-            }
-            
-            .sidebar {
-                display: none;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-                position: fixed;
-                bottom: 20px;
-                right: 20px;
-                width: 60px;
-                height: 60px;
-                border-radius: 50%;
-                background: var(--primary);
-                color: white;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 1.5rem;
-                box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-                z-index: 100;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .content-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            .progress-container {
-                margin-top: 15px;
-                width: 100%;
-            }
-            
-            .dashboard-cards {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        /* Workbook Styles */
-        .cover {
-            background: linear-gradient(135deg, #1B365D 0%, #2A9D8F 50%, #F4A261 100%);
-            color: white;
-            text-align: center;
-            padding: 80px 40px;
             position: relative;
             overflow: hidden;
-            border-radius: 10px;
-            margin-bottom: 20px;
         }
-        
-        .cover h1 {
-            font-size: 3.5em;
-            margin: 0 0 20px 0;
-            font-weight: 300;
-            letter-spacing: 3px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-        
-        .cover .subtitle {
-            font-size: 1.4em;
-            font-style: italic;
-            margin-bottom: 30px;
-            opacity: 0.9;
-        }
-        
-        .cover .tagline {
-            font-size: 1.1em;
-            margin-bottom: 40px;
-            opacity: 0.8;
-        }
-        
-        .cover .author {
-            font-size: 1.2em;
-            font-weight: bold;
-            margin-top: 40px;
-            background: rgba(255,255,255,0.1);
-            padding: 15px;
-            border-radius: 10px;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-        
-        .butterfly-trail {
+
+        .nav-header::before {
+            content: "🦋";
             position: absolute;
             top: 20px;
             right: 30px;
-            font-size: 4em;
+            font-size: 2.5em;
             opacity: 0.3;
-            animation: float 6s ease-in-out infinite;
+            animation: float 3s ease-in-out infinite;
         }
-        
+
         @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(5deg); }
         }
-        
-        .thomson-quote {
-            background: linear-gradient(135deg, #6A4C93, #8A6FA8);
-            color: white;
-            padding: 30px;
-            border-radius: 15px;
-            margin: 25px 0;
+
+        .app-title {
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .app-subtitle {
+            font-size: 1.3em;
+            opacity: 0.95;
             font-style: italic;
-            position: relative;
-            box-shadow: 0 5px 15px rgba(106,76,147,0.3);
         }
-        
-        .exercise-box {
-            background: linear-gradient(135deg, #f0f8ff 0%, #e8f4fd 100%);
-            border: 3px solid #B3D9F7;
+
+        .progress-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 4px;
+            background: #F4A261;
+            transition: width 0.3s ease;
+            border-radius: 0 2px 0 0;
+        }
+
+        .module-nav {
+            background: #f8f9fa;
+            padding: 25px 20px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            border-bottom: 3px solid #dee2e6;
+        }
+
+        .module-btn {
+            background: white;
+            border: 2px solid #dee2e6;
+            padding: 15px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            color: #495057;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .module-btn:hover {
+            border-color: #2A9D8F;
+            color: #2A9D8F;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(42, 157, 143, 0.2);
+        }
+
+        .module-btn.active {
+            background: #2A9D8F;
+            color: white;
+            border-color: #2A9D8F;
+        }
+
+        .module-content {
+            display: none;
+            padding: 40px;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .module-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .module-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #dee2e6;
+        }
+
+        .module-title {
+            font-size: 2.5em;
+            color: #1B365D;
+            margin-bottom: 15px;
+            font-weight: 300;
+        }
+
+        .module-subtitle {
+            font-size: 1.3em;
+            color: #6c757d;
+            font-style: italic;
+        }
+
+        .reflection-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
             padding: 30px;
             border-radius: 15px;
             margin: 30px 0;
-            position: relative;
+            border-left: 5px solid #2A9D8F;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
-        
-        .exercise-title {
-            color: #1B365D;
-            font-size: 1.4em;
+
+        .reflection-prompt {
+            font-size: 1.2em;
             font-weight: bold;
+            color: #1B365D;
             margin-bottom: 20px;
-            margin-top: 10px;
         }
-        
-        .reflection-space {
+
+        .text-area {
+            width: 100%;
+            min-height: 150px;
+            padding: 20px;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1.1em;
+            line-height: 1.6;
+            resize: vertical;
+            transition: border-color 0.3s ease;
+        }
+
+        .text-area:focus {
+            outline: none;
+            border-color: #2A9D8F;
+            box-shadow: 0 0 0 3px rgba(42, 157, 143, 0.1);
+        }
+
+        .assessment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .assessment-card {
             background: white;
             border: 2px solid #dee2e6;
-            min-height: 80px;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 15px 0;
-            box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
-        }
-        
-        .back-to-dashboard {
-            margin-bottom: 20px;
-        }
-        
-        .module-header {
-            background: linear-gradient(135deg, #1B365D, #2A9D8F);
-            color: white;
-            padding: 40px;
-            margin: -30px -30px 30px -30px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            border-radius: 10px 10px 0 0;
-        }
-        
-        .module-number {
-            font-size: 1.3em;
-            opacity: 0.8;
-            margin-bottom: 10px;
-        }
-        
-        .module-title {
-            font-size: 2.5em;
-            margin: 0;
-            font-weight: 300;
-        }
-        
-        .module-subtitle {
-            font-size: 1.2em;
-            margin-top: 10px;
-            opacity: 0.9;
-        }
-        
-        .research-box {
-            background: linear-gradient(135deg, #e8f4fd 0%, #d4e9f7 100%);
-            border-left: 5px solid #2A9D8F;
+            border-radius: 12px;
             padding: 25px;
-            margin: 25px 0;
-            border-radius: 0 12px 12px 0;
-            box-shadow: 0 3px 10px rgba(42,157,143,0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
-        
-        .tip-box {
-            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
-            border: 2px solid #F4A261;
+
+        .assessment-card:hover {
+            border-color: #2A9D8F;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .assessment-card.selected {
+            border-color: #2A9D8F;
+            background: linear-gradient(135deg, #2A9D8F 0%, #27AE60 100%);
+            color: white;
+        }
+
+        .british-humour {
+            background: linear-gradient(135deg, #FFF3CD 0%, #FFEAA7 100%);
             padding: 25px;
             border-radius: 12px;
-            margin: 25px 0;
-            box-shadow: 0 3px 10px rgba(244,162,97,0.2);
+            border-left: 5px solid #F4A261;
+            margin: 30px 0;
+            font-style: italic;
+        }
+
+        .prof-thomson {
+            font-weight: bold;
+            color: #E76F51;
+        }
+
+        .tea-break {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, #E8F5E8 0%, #D4EDDA 100%);
+            border-radius: 15px;
+            margin: 40px 0;
+            border: 2px dashed #27AE60;
+        }
+
+        .tea-break::before {
+            content: "☕";
+            font-size: 3em;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 40px 0;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            font-size: 1.1em;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #2A9D8F, #27AE60);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(42, 157, 143, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #1B365D;
+            border: 2px solid #1B365D;
+        }
+
+        .btn-secondary:hover {
+            background: #1B365D;
+            color: white;
+        }
+
+        .progress-tracker {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            padding: 15px;
+            border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 2px solid #dee2e6;
+            min-width: 120px;
+            text-align: center;
+            z-index: 1000;
+        }
+
+        .keyboard-shortcuts {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 0.9em;
+            opacity: 0.7;
+            z-index: 1000;
+        }
+
+        @media (max-width: 768px) {
+            .app-title {
+                font-size: 2.2em;
+            }
+            
+            .module-nav {
+                padding: 15px 10px;
+            }
+            
+            .module-btn {
+                padding: 12px 20px;
+                font-size: 0.9em;
+            }
+            
+            .module-content {
+                padding: 20px;
+            }
+            
+            .assessment-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .progress-tracker {
+                position: static;
+                margin: 20px auto;
+                display: block;
+                width: fit-content;
+            }
+            
+            .keyboard-shortcuts {
+                display: none;
+            }
         }
     </style>
 </head>
 <body>
     <div class="app-container">
-        <!-- Header -->
-        <div class="app-header">
-            <h1>Moving On: Career Transition Workbook</h1>
-            <div class="user-info">
-                <div class="user-avatar">JT</div>
-                <div>Prof. James Thomson</div>
+        <div class="nav-header">
+            <h1 class="app-title">Moving On</h1>
+            <p class="app-subtitle">The Senior Academic's Career Transition Journey</p>
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <div class="progress-tracker">
+            <div id="progressText">Progress: 0%</div>
+            <div style="font-size: 0.8em; opacity: 0.7; margin-top: 5px;">Auto-saving...</div>
+        </div>
+
+        <nav class="module-nav">
+            <a href="#" class="module-btn active" onclick="showModule('welcome')">Welcome</a>
+            <a href="#" class="module-btn" onclick="showModule('module1')">Identity & Readiness</a>
+            <a href="#" class="module-btn" onclick="showModule('module2')">Academic Superpowers</a>
+            <a href="#" class="module-btn" onclick="showModule('module3')">Purpose Discovery</a>
+            <a href="#" class="module-btn" onclick="showModule('module4')">Action Planning</a>
+        </nav>
+
+        <!-- Welcome Module -->
+        <div id="welcome" class="module-content active">
+            <div class="module-header">
+                <h2 class="module-title">Welcome, Dear Colleague</h2>
+                <p class="module-subtitle">Your journey of academic career transformation begins here</p>
+            </div>
+
+            <div class="british-humour">
+                <p><span class="prof-thomson">Prof Thomson says:</span> "Welcome to this rather important conversation with yourself. I'm delighted you're here, even if you're feeling a bit uncertain about what comes next. That's perfectly normal – career transitions are rather like academic conferences: you're never quite sure what you'll discover, but you usually leave with something valuable."</p>
+            </div>
+
+            <div class="reflection-section">
+                <div class="reflection-prompt">Let's start with a moment of honest reflection:</div>
+                <p style="margin-bottom: 20px;">What brought you to this career transition app today? What's stirring in your professional life that made you think "I need to explore this"?</p>
+                <textarea id="welcome-reflection" class="text-area" placeholder="Take your time here. There's no rush, and no one else will see this unless you choose to share it..."></textarea>
+            </div>
+
+            <div class="tea-break">
+                <h3>A Proper British Pause</h3>
+                <p>Before we continue, why not put the kettle on? This journey works best with a good cup of tea and an open mind.</p>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn btn-primary" onclick="showModule('module1')">Begin the Journey →</button>
+                <button class="btn btn-secondary" onclick="saveProgress()">Save Progress</button>
             </div>
         </div>
-        
-        <!-- Dashboard Layout -->
-        <div class="dashboard">
-            <!-- Sidebar Navigation -->
-            <div class="sidebar">
-                <div class="sidebar-header">
-                    <h2>Workbook Modules</h2>
-                    <p>Your journey to career transition</p>
-                </div>
-                
-                <ul class="sidebar-menu">
-                    <li><a href="#" class="nav-link active" data-target="dashboard"><i class="fas fa-home"></i> Dashboard</a></li>
-                    <li><a href="#" class="nav-link" data-target="introduction"><i class="fas fa-book-open"></i> Introduction</a></li>
-                    <li>
-                        <a href="#" class="nav-link" data-target="module1"><i class="fas fa-star"></i> Module 1: Fresh Start</a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link" data-target="module2"><i class="fas fa-feather-alt"></i> Module 2: Building Confidence</a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link" data-target="module3"><i class="fas fa-bullseye"></i> Module 3: Planning Next</a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link" data-target="module4"><i class="fas fa-rocket"></i> Module 4: Making It Happen</a>
-                    </li>
-                    <li><a href="#" class="nav-link" data-target="resources"><i class="fas fa-gift"></i> Bonus Resources</a></li>
-                </ul>
+
+        <!-- Module 1: Identity & Readiness -->
+        <div id="module1" class="module-content">
+            <div class="module-header">
+                <h2 class="module-title">Academic Identity & Transition Readiness</h2>
+                <p class="module-subtitle">Understanding the layers of who you are professionally</p>
             </div>
-            
-            <!-- Main Content Area -->
-            <div class="main-content">
-                <!-- Dashboard Content -->
-                <div id="dashboard" class="workbook-content active">
-                    <div class="content-header">
-                        <h1>Workbook Dashboard</h1>
-                        <div class="progress-container">
-                            <div class="progress-text">0% Complete</div>
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: 0%"></div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Dashboard Cards -->
-                    <div class="dashboard-cards">
-                        <div class="card">
-                            <div class="card-header">
-                                <h3>Welcome Back!</h3>
-                                <div class="card-icon">
-                                    <i class="fas fa-user"></i>
-                                </div>
-                            </div>
-                            <p>You haven't started any modules yet. Begin your journey by exploring Module 1.</p>
-                            <p class="module-status">Not Started</p>
-                        </div>
-                        
-                        <div class="card">
-                            <div class="card-header">
-                                <h3>Next Steps</h3>
-                                <div class="card-icon">
-                                    <i class="fas fa-list"></i>
-                                </div>
-                            </div>
-                            <p>Your recommended next step is to begin with Module 1: Ready for a Fresh Start.</p>
-                            <button class="btn btn-primary start-module" data-target="module1">Start Module 1</button>
-                        </div>
-                        
-                        <div class="card">
-                            <div class="card-header">
-                                <h3>Time Investment</h3>
-                                <div class="card-icon">
-                                    <i class="fas fa-clock"></i>
-                                </div>
-                            </div>
-                            <p>This workbook is designed to be completed over 4-6 weeks, spending 2-3 hours per week.</p>
-                            <p>Estimated total time: 12-15 hours</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Module Progress -->
-                    <div class="module-progress">
-                        <h2>Module Progress</h2>
-                        <p>Track your progress through each module of the workbook</p>
-                        
-                        <div class="module-item">
-                            <div class="module-status" id="intro-status"></div>
-                            <div class="module-details">
-                                <div class="module-title">Introduction: A New Chapter Begins</div>
-                                <div class="module-subtitle">Understanding the transition process</div>
-                            </div>
-                            <div class="module-action">
-                                <button class="btn btn-primary start-module" data-target="introduction">Start</button>
-                            </div>
-                        </div>
-                        
-                        <div class="module-item">
-                            <div class="module-status" id="module1-status"></div>
-                            <div class="module-details">
-                                <div class="module-title">Module 1: Ready for a Fresh Start</div>
-                                <div class="module-subtitle">Where Are You Now?</div>
-                            </div>
-                            <div class="module-action">
-                                <button class="btn btn-primary start-module" data-target="module1">Start</button>
-                            </div>
-                        </div>
-                        
-                        <div class="module-item">
-                            <div class="module-status" id="module2-status"></div>
-                            <div class="module-details">
-                                <div class="module-title">Module 2: Building Confidence</div>
-                                <div class="module-subtitle">Reconnecting with Your Strengths</div>
-                            </div>
-                            <div class="module-action">
-                                <button class="btn btn-primary start-module" data-target="module2">Start</button>
-                            </div>
-                        </div>
-                        
-                        <div class="module-item">
-                            <div class="module-status" id="module3-status"></div>
-                            <div class="module-details">
-                                <div class="module-title">Module 3: Planning What's Next</div>
-                                <div class="module-subtitle">Your Purpose Journey</div>
-                            </div>
-                            <div class="module-action">
-                                <button class="btn btn-primary start-module" data-target="module3">Start</button>
-                            </div>
-                        </div>
-                        
-                        <div class="module-item">
-                            <div class="module-status" id="module4-status"></div>
-                            <div class="module-details">
-                                <div class="module-title">Module 4: Making It Happen</div>
-                                <div class="module-subtitle">Implementation & Support</div>
-                            </div>
-                            <div class="module-action">
-                                <button class="btn btn-primary start-module" data-target="module4">Start</button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Resources -->
-                    <div class="resources">
-                        <h2>Quick Resources</h2>
-                        <p>Helpful materials to support your transition</p>
-                        
-                        <div class="resources-grid">
-                            <div class="resource-item">
-                                <div class="resource-icon">
-                                    <i class="fas fa-file-pdf"></i>
-                                </div>
-                                <div class="resource-details">
-                                    <div class="resource-title">Skills Assessment Template</div>
-                                    <div class="resource-desc">PDF worksheet</div>
-                                </div>
-                            </div>
-                            
-                            <div class="resource-item">
-                                <div class="resource-icon">
-                                    <i class="fas fa-video"></i>
-                                </div>
-                                <div class="resource-details">
-                                    <div class="resource-title">Networking Strategies</div>
-                                    <div class="resource-desc">Video guide</div>
-                                </div>
-                            </div>
-                            
-                            <div class="resource-item">
-                                <div class="resource-icon">
-                                    <i class="fas fa-book"></i>
-                                </div>
-                                <div class="resource-details">
-                                    <div class="resource-title">Recommended Reading</div>
-                                    <div class="resource-desc">Book list</div>
-                                </div>
-                            </div>
-                            
-                            <div class="resource-item">
-                                <div class="resource-icon">
-                                    <i class="fas fa-calendar"></i>
-                                </div>
-                                <div class="resource-details">
-                                    <div class="resource-title">90-Day Plan Template</div>
-                                    <div class="resource-desc">Interactive worksheet</div>
-                                </div>
-                            </div>
-                        </div>
+
+            <div class="british-humour">
+                <p><span class="prof-thomson">Prof Thomson observes:</span> "Academic identity is rather like an onion – it has many layers, and sometimes examining it makes you cry. But unlike an onion, we're not trying to chop it up; we're trying to understand how all those layers work together."</p>
+            </div>
+
+            <div class="reflection-section">
+                <div class="reflection-prompt">Your Academic Identity Layers</div>
+                <p>Think about your various professional identities. You might be a researcher, teacher, administrator, mentor, subject expert, institutional citizen, and more. List them here:</p>
+                <textarea id="identity-layers" class="text-area" placeholder="E.g., Researcher in medieval history, Senior lecturer, Mentor to early career academics, Committee member..."></textarea>
+            </div>
+
+            <div class="assessment-grid">
+                <div class="assessment-card" onclick="toggleCard(this, 'readiness-energy')">
+                    <h3>Energy Level</h3>
+                    <p>I feel energized by my current academic work</p>
+                    <div style="margin-top: 15px;">
+                        <strong>Strongly Disagree ← → Strongly Agree</strong>
                     </div>
                 </div>
-                
-                <!-- Introduction Content -->
-                <div id="introduction" class="workbook-content">
-                    <button class="btn btn-primary back-to-dashboard">← Back to Dashboard</button>
-                    
-                    <div class="workbook-page">
-                        <h2>A Rather Warm Welcome from Prof Thomson</h2>
-                        
-                        <div class="thomson-quote">
-                            "Dear colleague, I'm absolutely delighted to be your guide through this important journey. Having spent over two decades navigating the increasingly complex landscape of UK higher education - from the 2008 financial crisis through Brexit uncertainty, COVID disruption, and now the current funding pressures - I've learnt that transition isn't just about changing jobs. It's about reimagining your professional identity whilst maintaining the essence of who you are."
-                        </div>
-
-                        <div class="exercise-box">
-                            <div class="exercise-title">Initial Reflection</div>
-                            <p>Before we begin, take a moment to reflect on what brought you to this workbook:</p>
-                            <div class="reflection-space" contenteditable="true">
-                                <p>What are your main reasons for considering a career transition at this time?</p>
-                            </div>
-                            <button class="btn btn-primary complete-section" data-module="introduction">Mark as Complete</button>
-                        </div>
+                <div class="assessment-card" onclick="toggleCard(this, 'readiness-alignment')">
+                    <h3>Value Alignment</h3>
+                    <p>My current role aligns well with my personal values</p>
+                    <div style="margin-top: 15px;">
+                        <strong>Not at all ← → Completely</strong>
                     </div>
                 </div>
-                
-                <!-- Module 1 Content -->
-                <div id="module1" class="workbook-content">
-                    <button class="btn btn-primary back-to-dashboard">← Back to Dashboard</button>
-                    
-                    <div class="workbook-page">
-                        <div class="module-header">
-                            <div class="module-number">Module 1</div>
-                            <h2 class="module-title">Ready for a Fresh Start</h2>
-                            <div class="module-subtitle">Where Are You Now?</div>
-                        </div>
-                        
-                        <div class="thomson-quote">
-                            "Before we can chart a course forward, we must understand precisely where we are. Not where we think we should be, or where others expect us to be, but where we actually are right now."
-                        </div>
-
-                        <div class="exercise-box">
-                            <div class="exercise-title">Exercise 1.1: Your Identity Architecture Assessment</div>
-                            <p>For each layer, rate your current satisfaction (1-10) and write a brief reflection:</p>
-                            
-                            <h4>🏛️ Professional Identity (Current Role & Status)</h4>
-                            <p>Rate your satisfaction with your current professional position: 
-                                <select id="professional-rating">
-                                    <option value="">Select rating</option>
-                                    <option value="1">1 - Very Dissatisfied</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5 - Neutral</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10 - Very Satisfied</option>
-                                </select>
-                            </p>
-                            <div class="reflection-space" contenteditable="true">
-                                <p><strong>Reflection prompts:</strong></p>
-                                <ul>
-                                    <li>How do you feel about your current role and responsibilities?</li>
-                                    <li>What aspects of your professional identity energise you?</li>
-                                    <li>What feels misaligned or draining?</li>
-                                </ul>
-                            </div>
-                            <button class="btn btn-primary complete-section" data-module="module1">Mark as Complete</button>
-                        </div>
+                <div class="assessment-card" onclick="toggleCard(this, 'readiness-growth')">
+                    <h3>Growth Opportunities</h3>
+                    <p>I see clear opportunities for growth in my current path</p>
+                    <div style="margin-top: 15px;">
+                        <strong>None visible ← → Many opportunities</strong>
                     </div>
                 </div>
-                
-                <!-- Module 2 Content -->
-                <div id="module2" class="workbook-content">
-                    <button class="btn btn-primary back-to-dashboard">← Back to Dashboard</button>
-                    
-                    <div class="workbook-page">
-                        <div class="module-header">
-                            <div class="module-number">Module 2</div>
-                            <h2 class="module-title">Building Confidence</h2>
-                            <div class="module-subtitle">Reconnecting with Your Strengths</div>
-                        </div>
-                        
-                        <div class="thomson-quote">
-                            "Here's something rather wonderful I've discovered: the very skills that make you brilliant as an academic are precisely what will make you brilliant in whatever comes next."
-                        </div>
-
-                        <div class="research-box">
-                            <h4>📊 Research Insight</h4>
-                            <p>Studies show that academics who successfully transition to new careers typically leverage at least 70% of their existing skills in their new roles.</p>
-                        </div>
-
-                        <div class="exercise-box">
-                            <div class="exercise-title">Exercise 2.1: Academic Skills Translation</div>
-                            <p>Identify your core academic skills and how they translate to other sectors:</p>
-                            
-                            <h4>🧠 Analytical Mastery</h4>
-                            <div class="reflection-space" contenteditable="true">
-                                <p><strong>How this skill applies outside academia:</strong></p>
-                                <p>Data analysis, problem-solving, strategic thinking, research capabilities</p>
-                            </div>
-                            
-                            <h4>💬 Communication Excellence</h4>
-                            <div class="reflection-space" contenteditable="true">
-                                <p><strong>How this skill applies outside academia:</strong></p>
-                                <p>Presentation skills, stakeholder communication, training and development</p>
-                            </div>
-                            <button class="btn btn-primary complete-section" data-module="module2">Mark as Complete</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Module 3 Content -->
-                <div id="module3" class="workbook-content">
-                    <button class="btn btn-primary back-to-dashboard">← Back to Dashboard</button>
-                    
-                    <div class="workbook-page">
-                        <div class="module-header">
-                            <div class="module-number">Module 3</div>
-                            <h2 class="module-title">Planning What's Next</h2>
-                            <div class="module-subtitle">Your Purpose Journey</div>
-                        </div>
-                        
-                        <div class="thomson-quote">
-                            "The question isn't 'What job should I get next?' The question is 'How can I best use my talents, experience, and passion to create meaningful impact?'"
-                        </div>
-
-                        <div class="tip-box">
-                            <h4>💡 Prof Thomson's Tip</h4>
-                            <p>Start with purpose rather than position. When you begin with what truly matters to you, the path becomes remarkably clear.</p>
-                        </div>
-
-                        <div class="exercise-box">
-                            <div class="exercise-title">Exercise 3.1: Your Ikigai Exploration</div>
-                            <p>Discover the intersection of what you love, what you're good at, what the world needs, and what you can be paid for:</p>
-                            
-                            <h4>💝 What You Love</h4>
-                            <div class="reflection-space" contenteditable="true">
-                                <p><strong>What activities make you lose track of time?</strong></p>
-                                <p><strong>What topics could you discuss for hours?</strong></p>
-                            </div>
-                            
-                            <h4>🌍 What the World Needs</h4>
-                            <div class="reflection-space" contenteditable="true">
-                                <p><strong>What problems in the world concern you most?</strong></p>
-                                <p><strong>What issues are you uniquely positioned to address?</strong></p>
-                            </div>
-                            <button class="btn btn-primary complete-section" data-module="module3">Mark as Complete</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Module 4 Content -->
-                <div id="module4" class="workbook-content">
-                    <button class="btn btn-primary back-to-dashboard">← Back to Dashboard</button>
-                    
-                    <div class="workbook-page">
-                        <div class="module-header">
-                            <div class="module-number">Module 4</div>
-                            <h2 class="module-title">Making It Happen</h2>
-                            <div class="module-subtitle">Implementation & Support</div>
-                        </div>
-                        
-                        <div class="thomson-quote">
-                            "Right then, enough reflecting - time for action! But not the frantic, scatter-gun approach that many academics take when they panic about their future. We're going to be strategic, systematic, and sensible about this transition."
-                        </div>
-
-                        <div class="exercise-box">
-                            <div class="exercise-title">Exercise 4.1: Your 90-Day Action Plan</div>
-                            <p>Create a realistic plan for your transition over the next three months:</p>
-                            
-                            <h4>📅 Month 1: Exploration</h4>
-                            <div class="reflection-space" contenteditable="true">
-                                <p><strong>Goals:</strong> Complete 5 informational interviews, update LinkedIn profile, identify target sectors</p>
-                            </div>
-                            
-                            <h4>📅 Month 2: Skill Development</h4>
-                            <div class="reflection-space" contenteditable="true">
-                                <p><strong>Goals:</strong> Address skill gaps, attend relevant workshops, begin networking in target industries</p>
-                            </div>
-                            
-                            <h4>📅 Month 3: Implementation</h4>
-                            <div class="reflection-space" contenteditable="true">
-                                <p><strong>Goals:</strong> Apply for positions, develop portfolio, secure references</p>
-                            </div>
-                            <button class="btn btn-primary complete-section" data-module="module4">Mark as Complete</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Resources Content -->
-                <div id="resources" class="workbook-content">
-                    <button class="btn btn-primary back-to-dashboard">← Back to Dashboard</button>
-                    
-                    <div class="workbook-page">
-                        <h2>Bonus Resources</h2>
-                        <p>Additional materials to support your career transition journey</p>
-                        
-                        <div class="resources-grid">
-                            <div class="resource-item">
-                                <div class="resource-icon">
-                                    <i class="fas fa-file-alt"></i>
-                                </div>
-                                <div class="resource-details">
-                                    <div class="resource-title">CV Template for Academics</div>
-                                    <div class="resource-desc">Industry-friendly academic CV template</div>
-                                </div>
-                            </div>
-                            
-                            <div class="resource-item">
-                                <div class="resource-icon">
-                                    <i class="fas fa-network-wired"></i>
-                                </div>
-                                <div class="resource-details">
-                                    <div class="resource-title">Networking Guide</div>
-                                    <div class="resource-desc">How to build professional connections</div>
-                                </div>
-                            </div>
-                            
-                            <div class="resource-item">
-                                <div class="resource-icon">
-                                    <i class="fas fa-comments"></i>
-                                </div>
-                                <div class="resource-details">
-                                    <div class="resource-title">Interview Preparation</div>
-                                    <div class="resource-desc">Common questions & strategies</div>
-                                </div>
-                            </div>
-                            
-                            <div class="resource-item">
-                                <div class="resource-icon">
-                                    <i class="fas fa-handshake"></i>
-                                </div>
-                                <div class="resource-details">
-                                    <div class="resource-title">Negotiation Guide</div>
-                                    <div class="resource-desc">How to negotiate job offers</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="research-box">
-                            <h4>📚 Recommended Reading</h4>
-                            <ul>
-                                <li>"What Color Is Your Parachute?" by Richard N. Bolles</li>
-                                <li>"Designing Your Life" by Bill Burnett and Dave Evans</li>
-                                <li>"The Professor Is In" by Karen Kelsky</li>
-                                <li>"Leaving Academia: A Practical Guide" by Christopher L. Caterine</li>
-                            </ul>
-                        </div>
+                <div class="assessment-card" onclick="toggleCard(this, 'readiness-impact')">
+                    <h3>Impact & Meaning</h3>
+                    <p>My work feels meaningful and impactful</p>
+                    <div style="margin-top: 15px;">
+                        <strong>Not meaningful ← → Highly meaningful</strong>
                     </div>
                 </div>
             </div>
+
+            <div class="action-buttons">
+                <button class="btn btn-secondary" onclick="showModule('welcome')">← Previous</button>
+                <button class="btn btn-primary" onclick="showModule('module2')">Continue →</button>
+            </div>
+        </div>
+
+        <!-- Module 2: Academic Superpowers -->
+        <div id="module2" class="module-content">
+            <div class="module-header">
+                <h2 class="module-title">Your Academic Superpowers</h2>
+                <p class="module-subtitle">Recognizing the unique strengths you've developed</p>
+            </div>
+
+            <div class="british-humour">
+                <p><span class="prof-thomson">Prof Thomson reminds:</span> "Academics are terrible at recognizing their own superpowers. We're trained to spot gaps and limitations, not strengths and transferable skills. But you've developed quite remarkable abilities – let's uncover them, shall we?"</p>
+            </div>
+
+            <div class="reflection-section">
+                <div class="reflection-prompt">Your Research Superpowers</div>
+                <p>What are you exceptionally good at when it comes to research? Think beyond just "I'm good at research" – what specific aspects make you stand out?</p>
+                <textarea id="research-powers" class="text-area" placeholder="E.g., I can synthesize complex information quickly, I spot patterns others miss, I'm persistent in pursuing difficult questions..."></textarea>
+            </div>
+
+            <div class="reflection-section">
+                <div class="reflection-prompt">Your Teaching & Communication Superpowers</div>
+                <p>How do you excel at sharing knowledge and working with others?</p>
+                <textarea id="teaching-powers" class="text-area" placeholder="E.g., I can explain complex concepts simply, I inspire curiosity in students, I build rapport quickly..."></textarea>
+            </div>
+
+            <div class="reflection-section">
+                <div class="reflection-prompt">Your Leadership & Organization Superpowers</div>
+                <p>What unique qualities do you bring to leadership, project management, or institutional service?</p>
+                <textarea id="leadership-powers" class="text-area" placeholder="E.g., I see the big picture while managing details, I bring people together around common goals, I remain calm under pressure..."></textarea>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn btn-secondary" onclick="showModule('module1')">← Previous</button>
+                <button class="btn btn-primary" onclick="showModule('module3')">Continue →</button>
+            </div>
+        </div>
+
+        <!-- Module 3: Purpose Discovery -->
+        <div id="module3" class="module-content">
+            <div class="module-header">
+                <h2 class="module-title">Purpose & Opportunity Discovery</h2>
+                <p class="module-subtitle">Mapping what matters most and where it might lead</p>
+            </div>
+
+            <div class="british-humour">
+                <p><span class="prof-thomson">Prof Thomson suggests:</span> "Purpose isn't always a dramatic revelation – sometimes it's more like realizing you've been walking toward something all along, and now you can see it more clearly. Let's do a bit of academic detective work on your own motivations."</p>
+            </div>
+
+            <div class="reflection-section">
+                <div class="reflection-prompt">Your Core Values & Motivators</div>
+                <p>What matters most to you in your professional life? What gets you excited about getting up in the morning?</p>
+                <textarea id="core-values" class="text-area" placeholder="E.g., Making a difference in students' lives, advancing knowledge in my field, working with brilliant colleagues, having intellectual freedom..."></textarea>
+            </div>
+
+            <div class="reflection-section">
+                <div class="reflection-prompt">Problems You're Passionate About Solving</div>
+                <p>What issues or challenges in the world genuinely bother you? What would you love to help fix or improve?</p>
+                <textarea id="problems-passion" class="text-area" placeholder="Consider both academic and broader societal issues that you care about deeply..."></textarea>
+            </div>
+
+            <div class="reflection-section">
+                <div class="reflection-prompt">Your Ideal Working Environment</div>
+                <p>Where and how do you do your best work? What kind of culture, pace, and structure brings out your best?</p>
+                <textarea id="ideal-environment" class="text-area" placeholder="Think about everything from physical spaces to team dynamics to work rhythms..."></textarea>
+            </div>
+
+            <div class="tea-break">
+                <h3>Another Contemplative Pause</h3>
+                <p>You're doing excellent work here. Take a moment to reflect on what's emerging. Sometimes the patterns become clearer when we step back.</p>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn btn-secondary" onclick="showModule('module2')">← Previous</button>
+                <button class="btn btn-primary" onclick="showModule('module4')">Continue →</button>
+            </div>
+        </div>
+
+        <!-- Module 4: Action Planning -->
+        <div id="module4" class="module-content">
+            <div class="module-header">
+                <h2 class="module-title">Your 90-Day Action Plan</h2>
+                <p class="module-subtitle">Turning insights into concrete next steps</p>
+            </div>
+
+            <div class="british-humour">
+                <p><span class="prof-thomson">Prof Thomson concludes:</span> "Right then, time to move from contemplation to action. We're not looking for a complete life overhaul here – just thoughtful, manageable steps that honor both where you are now and where you'd like to be heading."</p>
+            </div>
+
+            <div class="reflection-section">
+                <div class="reflection-prompt">Your Key Insights So Far</div>
+                <p>Looking back at your reflections, what are the most important things you've learned about yourself and your career situation?</p>
+                <textarea id="key-insights" class="text-area" placeholder="Summarize your main discoveries and realizations from this journey..."></textarea>
+            </div>
+
+            <div class="reflection-section">
+                <div class="reflection-prompt">Next 30 Days: Exploration Actions</div>
+                <p>What specific actions will you take in the next month to explore possibilities and gather information?</p>
+                <textarea id="month1-actions" class="text-area" placeholder="E.g., Have coffee with 3 people in different career paths, research specific opportunities, attend relevant events..."></textarea>
+            </div>
+
+            <div class="reflection-section">
+                <div class="reflection-prompt">Days 31-60: Preparation & Building</div>
+                <p>What will you do to prepare yourself and build toward your preferred direction?</p>
+                <textarea id="month2-actions" class="text-area" placeholder="E.g., Update CV/portfolio, develop new skills, strengthen network connections, clarify goals..."></textarea>
+            </div>
+
+            <div class="reflection-section">
+                <div class="reflection-prompt">Days 61-90: Taking Action</div>
+                <p>What concrete steps will you take to move toward your goals?</p>
+                <textarea id="month3-actions" class="text-area" placeholder="E.g., Apply for specific opportunities, launch new projects, make key decisions, set next phase goals..."></textarea>
+            </div>
+
+            <div class="reflection-section">
+                <div class="reflection-prompt">Your Support Network</div>
+                <p>Who will you involve in this journey? Who can provide advice, encouragement, accountability, or practical help?</p>
+                <textarea id="support-network" class="text-area" placeholder="Think about mentors, colleagues, friends, family, professional contacts..."></textarea>
+            </div>
+
+            <div class="british-humour">
+                <p><span class="prof-thomson">Prof Thomson's Parting Words:</span> "Remember, dear colleague, career transition isn't about abandoning your academic self – it's about evolving it. You're not losing your identity; you're expanding it. Trust the process, be patient with yourself, and remember that the best career moves often feel scary at first. That's how you know you're growing."</p>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn btn-secondary" onclick="showModule('module3')">← Previous</button>
+                <button class="btn btn-primary" onclick="exportProgress()">Export My Journey</button>
+                <button class="btn btn-primary" onclick="emailProgress()">Email to Paul</button>
+            </div>
+        </div>
+
+        <div class="keyboard-shortcuts">
+            <strong>Shortcuts:</strong> Ctrl+S (Save) | Ctrl+1-5 (Navigate)
         </div>
     </div>
 
     <script>
-        // Function to update progress
-        function updateProgress() {
-            // Calculate progress based on completed items
-            const totalModules = 5; // Introduction + 4 modules
-            const completedModules = document.querySelectorAll('.module-status.completed').length;
-            const progressPercentage = Math.round((completedModules / totalModules) * 100);
+        let currentModule = 'welcome';
+        let progressData = {};
+
+        // Initialize app
+        document.addEventListener('DOMContentLoaded', function() {
+            loadProgress();
+            updateProgress();
+            showWelcomeTour();
+        });
+
+        // Show specific module
+        function showModule(moduleId) {
+            // Hide all modules
+            document.querySelectorAll('.module-content').forEach(module => {
+                module.classList.remove('active');
+            });
             
-            // Update progress bar
-            document.querySelector('.progress-fill').style.width = `${progressPercentage}%`;
-            document.querySelector('.progress-text').textContent = `${progressPercentage}% Complete`;
+            // Show selected module
+            document.getElementById(moduleId).classList.add('active');
             
-            // Update dashboard message based on progress
-            const dashboardMessage = document.querySelector('.dashboard-cards .card p');
-            if (progressPercentage === 0) {
-                dashboardMessage.textContent = "You haven't started any modules yet. Begin your journey by exploring Module 1.";
-            } else if (progressPercentage < 50) {
-                dashboardMessage.textContent = `You're making progress! You've completed ${completedModules} of ${totalModules} modules.`;
-            } else if (progressPercentage < 100) {
-                dashboardMessage.textContent = `Well done! You've completed ${completedModules} of ${totalModules} modules.`;
-            } else {
-                dashboardMessage.textContent = "Congratulations! You've completed all modules.";
+            // Update navigation
+            document.querySelectorAll('.module-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            currentModule = moduleId;
+            updateProgress();
+            saveProgress();
+        }
+
+        // Toggle assessment cards
+        function toggleCard(card, dataKey) {
+            card.classList.toggle('selected');
+            progressData[dataKey] = card.classList.contains('selected');
+            saveProgress();
+            updateProgress();
+        }
+
+        // Save progress to localStorage
+        function saveProgress() {
+            // Collect all form data
+            const formData = {};
+            document.querySelectorAll('.text-area').forEach(textarea => {
+                formData[textarea.id] = textarea.value;
+            });
+            
+            const data = {
+                currentModule: currentModule,
+                formData: formData,
+                assessments: progressData,
+                lastSaved: new Date().toISOString()
+            };
+            
+            localStorage.setItem('academicTransitionProgress', JSON.stringify(data));
+            
+            // Show save confirmation briefly
+            const progressTracker = document.querySelector('.progress-tracker');
+            const originalText = progressTracker.innerHTML;
+            progressTracker.innerHTML = '<div style="color: #27AE60;">✓ Saved</div>';
+            setTimeout(() => {
+                progressTracker.innerHTML = originalText;
+            }, 1500);
+        }
+
+        // Load progress from localStorage
+        function loadProgress() {
+            const saved = localStorage.getItem('academicTransitionProgress');
+            if (saved) {
+                const data = JSON.parse(saved);
+                progressData = data.assessments || {};
+                
+                // Restore form data
+                Object.entries(data.formData || {}).forEach(([id, value]) => {
+                    const element = document.getElementById(id);
+                    if (element) element.value = value;
+                });
+                
+                // Restore assessment selections
+                Object.entries(progressData).forEach(([key, selected]) => {
+                    if (selected) {
+                        const card = document.querySelector(`[onclick*="${key}"]`);
+                        if (card) card.classList.add('selected');
+                    }
+                });
             }
         }
-        
-        // Navigation functionality
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = this.getAttribute('data-target');
-                
-                // Update active navigation link
-                document.querySelectorAll('.nav-link').forEach(nav => {
-                    nav.classList.remove('active');
-                });
-                this.classList.add('active');
-                
-                // Show target content
-                document.querySelectorAll('.workbook-content').forEach(content => {
-                    content.classList.remove('active');
-                });
-                document.getElementById(target).classList.add('active');
-            });
-        });
-        
-        // Start module buttons
-        document.querySelectorAll('.start-module').forEach(button => {
-            button.addEventListener('click', function() {
-                const target = this.getAttribute('data-target');
-                
-                // Update active navigation link
-                document.querySelectorAll('.nav-link').forEach(nav => {
-                    nav.classList.remove('active');
-                    if (nav.getAttribute('data-target') === target) {
-                        nav.classList.add('active');
-                    }
-                });
-                
-                // Show target content
-                document.querySelectorAll('.workbook-content').forEach(content => {
-                    content.classList.remove('active');
-                });
-                document.getElementById(target).classList.add('active');
-            });
-        });
-        
-        // Back to dashboard buttons
-        document.querySelectorAll('.back-to-dashboard').forEach(button => {
-            button.addEventListener('click', function() {
-                // Show dashboard
-                document.querySelectorAll('.workbook-content').forEach(content => {
-                    content.classList.remove('active');
-                });
-                document.getElementById('dashboard').classList.add('active');
-                
-                // Update navigation
-                document.querySelectorAll('.nav-link').forEach(nav => {
-                    nav.classList.remove('active');
-                    if (nav.getAttribute('data-target') === 'dashboard') {
-                        nav.classList.add('active');
-                    }
-                });
-            });
-        });
-        
-        // Complete section buttons
-        document.querySelectorAll('.complete-section').forEach(button => {
-            button.addEventListener('click', function() {
-                const module = this.getAttribute('data-module');
-                const statusElement = document.getElementById(`${module}-status`);
-                
-                // Mark as completed
-                statusElement.classList.add('completed');
-                statusElement.innerHTML = '<i class="fas fa-check"></i>';
-                
-                // Update button text in dashboard
-                document.querySelectorAll('.module-action .btn').forEach(btn => {
-                    if (btn.getAttribute('data-target') === module) {
-                        btn.textContent = 'Continue';
-                    }
-                });
-                
-                // Update progress
+
+        // Update progress display
+        function updateProgress() {
+            const totalFields = document.querySelectorAll('.text-area').length;
+            const completedFields = Array.from(document.querySelectorAll('.text-area')).filter(t => t.value.trim().length > 0).length;
+            const totalAssessments = Object.keys(progressData).length;
+            const progress = Math.round(((completedFields + totalAssessments) / (totalFields + 8)) * 100);
+            
+            document.getElementById('progressText').textContent = `Progress: ${progress}%`;
+            document.getElementById('progressBar').style.width = `${progress}%`;
+        }
+
+        // Auto-save functionality
+        document.addEventListener('input', function(e) {
+            if (e.target.classList.contains('text-area')) {
+                clearTimeout(window.saveTimer);
+                window.saveTimer = setTimeout(saveProgress, 2000);
                 updateProgress();
-                
-                // Show confirmation message
-                alert('Progress saved! Well done on completing this section.');
-            });
+            }
         });
-        
-        // Initialize progress
-        updateProgress();
+
+        // Export functionality
+        function exportProgress() {
+            const data = JSON.parse(localStorage.getItem('academicTransitionProgress') || '{}');
+            const exportText = `Academic Career Transition Journey - ${new Date().toLocaleDateString()}
+
+WELCOME REFLECTION:
+${data.formData?.['welcome-reflection'] || 'Not completed'}
+
+ACADEMIC IDENTITY LAYERS:
+${data.formData?.['identity-layers'] || 'Not completed'}
+
+RESEARCH SUPERPOWERS:
+${data.formData?.['research-powers'] || 'Not completed'}
+
+TEACHING & COMMUNICATION SUPERPOWERS:
+${data.formData?.['teaching-powers'] || 'Not completed'}
+
+LEADERSHIP & ORGANIZATION SUPERPOWERS:
+${data.formData?.['leadership-powers'] || 'Not completed'}
+
+CORE VALUES & MOTIVATORS:
+${data.formData?.['core-values'] || 'Not completed'}
+
+PROBLEMS YOU'RE PASSIONATE ABOUT:
+${data.formData?.['problems-passion'] || 'Not completed'}
+
+IDEAL WORKING ENVIRONMENT:
+${data.formData?.['ideal-environment'] || 'Not completed'}
+
+KEY INSIGHTS:
+${data.formData?.['key-insights'] || 'Not completed'}
+
+30-DAY ACTION PLAN:
+${data.formData?.['month1-actions'] || 'Not completed'}
+
+60-DAY ACTION PLAN:
+${data.formData?.['month2-actions'] || 'Not completed'}
+
+90-DAY ACTION PLAN:
+${data.formData?.['month3-actions'] || 'Not completed'}
+
+SUPPORT NETWORK:
+${data.formData?.['support-network'] || 'Not completed'}
+
+Generated by Moving On - Academic Career Transition App
+Created by Paul Thomas - Senior Academic Transformations`;
+            
+            const blob = new Blob([exportText], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `academic-transition-journey-${new Date().toISOString().split('T')[0]}.txt`;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        // Email to Paul functionality
+        function emailProgress() {
+            const data = JSON.parse(localStorage.getItem('academicTransitionProgress') || '{}');
+            const emailBody = encodeURIComponent(`Dear Paul,
+
+I've completed your Academic Career Transition App and would like to share my journey with you. Here are my responses:
+
+WELCOME REFLECTION:
+${data.formData?.['welcome-reflection'] || 'Not completed'}
+
+KEY INSIGHTS:
+${data.formData?.['key-insights'] || 'Not completed'}
+
+90-DAY ACTION PLAN SUMMARY:
+${data.formData?.['month1-actions'] || 'Not completed'}
+
+I'd be interested in discussing next steps. Please let me know about your coaching services.
+
+Best regards`);
+            
+            const subject = encodeURIComponent('Career Transition App - My Journey Results');
+            const mailtoLink = `mailto:paul@paulthomascoaching.co.uk?subject=${subject}&body=${emailBody}`;
+            window.location.href = mailtoLink;
+        }
+
+        // Welcome tour
+        function showWelcomeTour() {
+            if (!localStorage.getItem('academicTransitionTourShown')) {
+                setTimeout(() => {
+                    alert('Welcome to your Academic Career Transition Journey!\n\nThis app will guide you through 4 modules of self-reflection and planning.\n\nYour progress is automatically saved as you work.\n\nUse the navigation buttons or keyboard shortcuts (Ctrl+1-5) to move between sections.\n\nTake your time - this is your journey.');
+                    localStorage.setItem('academicTransitionTourShown', 'true');
+                }, 1000);
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey) {
+                switch(e.key) {
+                    case 's':
+                        e.preventDefault();
+                        saveProgress();
+                        break;
+                    case '1':
+                        e.preventDefault();
+                        showModule('welcome');
+                        break;
+                    case '2':
+                        e.preventDefault();
+                        showModule('module1');
+                        break;
+                    case '3':
+                        e.preventDefault();
+                        showModule('module2');
+                        break;
+                    case '4':
+                        e.preventDefault();
+                        showModule('module3');
+                        break;
+                    case '5':
+                        e.preventDefault();
+                        showModule('module4');
+                        break;
+                }
+            }
+        });
+
+        // Print functionality
+        function printModule() {
+            window.print();
+        }
     </script>
 </body>
 </html>
