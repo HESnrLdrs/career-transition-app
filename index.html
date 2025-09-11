@@ -1,6 +1,30 @@
 <!DOCTYPE html>
 <html lang="en-GB">
 <head>
+    <style>
+.app-header {
+    background: #f8f9fa;
+    padding: 1rem;
+    border-bottom: 1px solid #dee2e6;
+    margin-bottom: 1rem;
+}
+.app-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.site-logo {
+    font-weight: 600;
+    color: #2c5aa0;
+    text-decoration: none;
+}
+.breadcrumb a {
+    color: #6c757d;
+    text-decoration: none;
+}
+</style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Moving On - Academic Career Transition App</title>
@@ -388,7 +412,14 @@
     </style>
 </head>
 <body>
-    <div class="app-container">
+   <div class="app-header">
+    <div class="app-nav">
+        <a href="../index.html" class="site-logo">Senior Academic Transformations</a>
+        <div class="breadcrumb">
+            <a href="../apps.html">Apps</a> > <span>Career Transition Navigator</span>
+        </div>
+    </div>
+</div> <div class="app-container">
         <div class="nav-header">
             <h1 class="app-title">Moving On</h1>
             <p class="app-subtitle">The Senior Academic's Career Transition Journey</p>
